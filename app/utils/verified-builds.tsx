@@ -160,6 +160,7 @@ function useEnrichedOsecInfo({
                 new PublicKey(VERIFY_PROGRAM_ID)
             );
 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const pdaAccountInfo = await (accountAnchorProgram.account as any).buildParams.fetch(pda);
             if (!pdaAccountInfo) {
                 return null;
@@ -203,6 +204,7 @@ function useEnrichedOsecInfo({
     return { data: enrichedOsecInfo, isLoading: isPdaLoading };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function coalesceCommandFromPda(programId: PublicKey, pdaData: any) {
     let verify_command = `solana-verify verify-from-repo -um --program-id ${programId.toBase58()} ${pdaData.gitUrl}`;
 

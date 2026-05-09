@@ -37,6 +37,7 @@ function NormalMetaplexNFTAttributesCard({ metadataUri }: { metadataUri: string 
             // Verify if the attributes value is an array
             if (Array.isArray(metadata.attributes)) {
                 // Filter attributes to keep objects matching schema
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 const filteredAttributes = metadata.attributes.filter((attribute: any) => {
                     return (
                         typeof attribute === 'object' &&

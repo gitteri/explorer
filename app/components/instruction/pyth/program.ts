@@ -25,6 +25,7 @@ export function headerLayout(property = 'header') {
     return BufferLayout.struct([BufferLayout.u32('version'), BufferLayout.u32('type')], property);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function decodeData(type: any, buffer: Buffer): any {
     let data;
     try {
@@ -91,6 +92,7 @@ class GreedyList extends Layout {
  * @internal
  */
 export const PYTH_INSTRUCTION_LAYOUTS: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [type in PythInstructionType]: any;
 } = Object.freeze({
     AddMapping: {

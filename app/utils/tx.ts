@@ -94,6 +94,7 @@ export function intoParsedTransaction(tx: Transaction): ParsedTransaction {
             })),
             recentBlockhash: message.recentBlockhash,
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         signatures: tx.signatures.map(value => bs58.encode(value.signature as any)),
     };
 }

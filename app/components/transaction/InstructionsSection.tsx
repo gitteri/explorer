@@ -23,6 +23,10 @@ import { UnknownDetailsCard } from '@components/instruction/UnknownDetailsCard';
 import { VoteDetailsCard } from '@components/instruction/vote/VoteDetailsCard';
 import { isWormholeInstruction } from '@components/instruction/wormhole/types';
 import { WormholeDetailsCard } from '@components/instruction/WormholeDetailsCard';
+import {
+    isZkElGamalProofInstruction,
+    ZkElGamalProofDetailsCard,
+} from '@components/instruction/ZkElGamalProofDetailsCard';
 import { useAnchorProgram } from '@providers/anchor';
 import { useCluster } from '@providers/cluster';
 import { useTransactionDetails, useTransactionStatus } from '@providers/transactions';
@@ -231,6 +235,8 @@ function InstructionCard({
         return <PythDetailsCard key={key} {...props} />;
     } else if (ComputeBudgetProgram.programId.equals(transactionIx.programId)) {
         return <ComputeBudgetDetailsCard key={key} {...props} />;
+    } else if (isZkElGamalProofInstruction(transactionIx)) {
+        return <ZkElGamalProofDetailsCard key={key} {...props} />;
     } else if (anchorProgram) {
         return (
             <ErrorBoundary fallback={<UnknownDetailsCard {...props} />} key={key}>

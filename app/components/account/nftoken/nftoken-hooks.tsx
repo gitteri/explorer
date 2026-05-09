@@ -19,6 +19,7 @@ export const useCollectionNfts = ({
     // We can be confident that data will be nonnull even if the request fails,
     // if we defined fallbackData in the config.
     data: NftokenTypes.NftInfo[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     error: any;
     mutate: SWRResponse<NftokenTypes.NftInfo[], never>['mutate'];
 } => {
@@ -40,6 +41,7 @@ export const useNftokenMetadata = (
     metadataUrl: string | null | undefined
 ): {
     data: NftokenTypes.Metadata | null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     error: any;
     mutate: SWRResponse<NftokenTypes.Metadata | null, never>['mutate'];
 } => {

@@ -51,8 +51,8 @@ export enum PROGRAM_NAMES {
     ORCA_AQUAFARM = 'Orca Aquafarm Program',
     ORE = 'ORE Program',
     PORT = 'Port Finance Program',
-    PYTH_DEVNET = 'Pyth Oracle Program',
-    PYTH_TESTNET = 'Pyth Oracle Program',
+    PYTH_DEVNET = 'Pyth Oracle Program (devnet)',
+    PYTH_TESTNET = 'Pyth Oracle Program (testnet)',
     PYTH_MAINNET = 'Pyth Oracle Program',
     QUARRY_MERGE_MINE = 'Quarry Merge Mine',
     QUARRY_MINE = 'Quarry Mine',
@@ -91,7 +91,12 @@ export enum PROGRAM_NAMES {
     ZK_LIGHT_SYSTEM_PROGRAM = 'Light System Program',
     ZK_COMPRESSED_TOKEN_PROGRAM = 'ZK Compressed Token Program',
     ZK_ACCOUNT_COMPRESSION_PROGRAM = 'ZK Account Compression Program',
+
+    // ZK ElGamal Proof
+    ZK_ELGAMAL_PROOF = 'ZK ElGamal Proof Program',
 }
+
+export const ZK_ELGAMAL_PROOF_PROGRAM_ID = 'ZkE1Gama1Proof11111111111111111111111111111';
 
 const ALL_CLUSTERS = [Cluster.Custom, Cluster.Devnet, Cluster.Testnet, Cluster.MainnetBeta];
 
@@ -383,6 +388,10 @@ export const PROGRAM_INFO_BY_ID: { [address: string]: ProgramInfo } = {
     WvmTNLpGMVbwJVYztYL4Hnsy82cJhQorxjnnXcRm3b6: {
         deployments: [Cluster.MainnetBeta],
         name: PROGRAM_NAMES.SERUM_POOL,
+    },
+    [ZK_ELGAMAL_PROOF_PROGRAM_ID]: {
+        deployments: ALL_CLUSTERS,
+        name: PROGRAM_NAMES.ZK_ELGAMAL_PROOF,
     },
     auctxRXPeJoc4817jDhf4HbjnhEcr1cCXenosMhK5R8: {
         deployments: LIVE_CLUSTERS,

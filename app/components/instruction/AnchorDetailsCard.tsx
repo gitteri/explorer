@@ -57,6 +57,7 @@ function AnchorDetails({ ix, anchorProgram }: { ix: TransactionInstruction; anch
                     ixDef => ixDef.name === decodedIxData?.name
                 ) as IdlEvent;
 
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 const ixEventFields = anchorProgram.idl.types?.find((type: any) => type.name === ixEventDef.name);
 
                 // Remap the event definition to an instruction definition by force casting to struct fields

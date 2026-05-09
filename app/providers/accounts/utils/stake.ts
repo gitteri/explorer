@@ -292,6 +292,7 @@ const getStakeHistory = function (
 
     const stakeHistory: StakeHistoryEntry[] = [];
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     parsedData.value.data.parsed.info.forEach((entry: any) => {
         stakeHistory.push({
             activating: BigInt(entry.stakeHistory.activating),

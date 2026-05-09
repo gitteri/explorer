@@ -49,8 +49,10 @@ function useIdlFromSolanaProgramBinary(programAddress: string): Idl | null {
     return param;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function parseIdlFromElf(elfBuffer: any) {
     const elf = elfy.parse(elfBuffer);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const solanaIdlSection = elf.body.sections.find((section: any) => section.name === '.solana.idl');
     if (!solanaIdlSection) {
         throw new Error('.solana.idl section not found');

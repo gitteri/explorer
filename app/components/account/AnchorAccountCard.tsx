@@ -15,14 +15,17 @@ export function AnchorAccountCard({ account }: { account: Account }) {
     const programName = getAnchorProgramName(anchorProgram) || 'Unknown Program';
 
     const { decodedAccountData, accountDef } = useMemo(() => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let decodedAccountData: any | null = null;
         let accountDef: IdlTypeDef | undefined = undefined;
         if (anchorProgram && rawData) {
             const coder = new BorshAccountsCoder(anchorProgram.idl);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const account = anchorProgram.idl.accounts?.find((accountType: any) =>
                 (rawData as Buffer).slice(0, 8).equals(coder.accountDiscriminator(accountType.name))
             );
             if (account) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 accountDef = anchorProgram.idl.types?.find((type: any) => type.name === account.name);
                 try {
                     decodedAccountData = coder.decode(account.name, rawData);

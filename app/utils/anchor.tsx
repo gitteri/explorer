@@ -89,6 +89,7 @@ export function getAnchorAccountsFromInstruction(
     return null;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function mapIxArgsToRows(ixArgs: any, ixType: IdlInstruction, idl: Idl) {
     return Object.entries(ixArgs).map(([key, value]) => {
         try {
@@ -97,6 +98,7 @@ export function mapIxArgsToRows(ixArgs: any, ixType: IdlInstruction, idl: Idl) {
                 throw Error(`Could not find expected ${key} field on account type definition for ${ixType.name}`);
             }
             return mapField(key, value, fieldDef.type, idl);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             console.log('Error while displaying IDL-based account data', error);
             return (
@@ -124,6 +126,7 @@ function getFieldDef(fields: IdlDefinedFields | undefined, key: string, index: n
     }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function mapAccountToRows(accountData: any, accountType: IdlTypeDef, idl: Idl) {
     return Object.entries(accountData).map(([key, value], index) => {
         try {
@@ -135,7 +138,9 @@ export function mapAccountToRows(accountData: any, accountType: IdlTypeDef, idl:
             if (!fieldDef) {
                 throw Error(`Could not find expected ${key} field on account type definition for ${accountType.name}`);
             }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             return mapField(key, value as any, fieldDef, idl);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             console.log('Error while displaying IDL-based account data', error);
             return (
@@ -152,6 +157,7 @@ export function mapAccountToRows(accountData: any, accountType: IdlTypeDef, idl:
     });
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapField(key: string, value: any, type: IdlType, idl: Idl, keySuffix?: any, nestingLevel = 0): ReactNode {
     let itemKey = key;
     if (/^-?\d+$/.test(keySuffix)) {
@@ -263,6 +269,7 @@ function mapField(key: string, value: any, type: IdlType, idl: Idl, keySuffix?: 
                     key={keySuffix ? `${key}-${keySuffix}` : key}
                 >
                     <Fragment key={keySuffix ? `${key}-${keySuffix}` : key}>
+                        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                         {Object.entries(value).map(([innerKey, innerValue]: [string, any]) => {
                             const innerFieldType = getFieldDef(structFields, innerKey, 0);
                             if (!innerFieldType) {
@@ -289,6 +296,7 @@ function mapField(key: string, value: any, type: IdlType, idl: Idl, keySuffix?: 
                     key={keySuffix ? `${key}-${keySuffix}` : key}
                 >
                     <Fragment key={keySuffix ? `${key}-${keySuffix}` : key}>
+                        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                         {Object.entries(value[enumVariantName]).map(([innerKey, innerValue]: [string, any], index) => {
                             const innerFieldType = variant.fields![index];
                             if (!innerFieldType) {
@@ -299,6 +307,7 @@ function mapField(key: string, value: any, type: IdlType, idl: Idl, keySuffix?: 
                             return mapField(
                                 innerKey,
                                 innerValue,
+                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                 (innerFieldType as any).name
                                     ? (innerFieldType as IdlField).type
                                     : (innerFieldType as IdlType),
@@ -348,6 +357,7 @@ function mapField(key: string, value: any, type: IdlType, idl: Idl, keySuffix?: 
                 key={keySuffix ? `${key}-${keySuffix}` : key}
             >
                 <Fragment key={keySuffix ? `${key}-${keySuffix}` : key}>
+                    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                     {(value as any[]).map((item, i) => mapField(key, item, itemType, idl, i, nestingLevel + 1))}
                 </Fragment>
             </ExpandableRow>
@@ -362,6 +372,7 @@ function mapField(key: string, value: any, type: IdlType, idl: Idl, keySuffix?: 
                 key={keySuffix ? `${key}-${keySuffix}` : key}
             >
                 <Fragment key={keySuffix ? `${key}-${keySuffix}` : key}>
+                    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                     {(value as any[]).map((item, i) => mapField(key, item, itemType, idl, i, nestingLevel + 1))}
                 </Fragment>
             </ExpandableRow>
@@ -387,6 +398,7 @@ function SimpleRow({
 }: {
     rawKey: string;
     type: IdlType | { enum: string };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     keySuffix?: any;
     nestingLevel: number;
     children?: ReactNode;

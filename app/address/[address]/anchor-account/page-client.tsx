@@ -3,8 +3,8 @@
 import { AnchorAccountCard } from '@components/account/AnchorAccountCard';
 import { ParsedAccountRenderer } from '@components/account/ParsedAccountRenderer';
 import { LoadingCard } from '@components/common/LoadingCard';
-import { Suspense } from 'react';
 import React from 'react';
+import { Suspense } from 'react';
 
 type Props = Readonly<{
     params: {

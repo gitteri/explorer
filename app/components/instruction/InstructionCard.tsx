@@ -114,6 +114,7 @@ export function InstructionCard({
 
 function ixResult(result: SignatureResult, index: number) {
     if (result.err) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const err = result.err as any;
         const ixError = err['InstructionError'];
         if (ixError && Array.isArray(ixError)) {

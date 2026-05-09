@@ -29,12 +29,14 @@ export function TokenDetailsCard(props: DetailsProps) {
     const { type: rawType, info } = parsed;
     const type = create(rawType, TokenInstructionType);
     const title = `${TOKEN_IDS[props.ix.programId.toString()]}: ${IX_TITLES[type]}`;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const created = create(info, IX_STRUCTS[type] as any);
     return <TokenInstruction title={title} info={created} {...props} />;
 }
 
 type InfoProps = {
     ix: ParsedInstruction;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     info: any;
     result: SignatureResult;
     index: number;

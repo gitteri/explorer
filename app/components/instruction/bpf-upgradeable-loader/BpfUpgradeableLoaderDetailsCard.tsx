@@ -66,6 +66,7 @@ function renderDetails<T extends object>(props: DetailsProps, parsed: ParsedInfo
     const info = create(parsed.info, struct);
 
     const attributes: JSX.Element[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     for (const entry of Object.entries<any>(info)) {
         const key = entry[0];
         let value = entry[1];

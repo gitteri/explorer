@@ -337,7 +337,9 @@ function TokenMintHeader({
                     <Suspense fallback={defaultCard}>
                         <Token22MintHeader
                             address={address}
+                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
                             metadataExtension={metadataExtension as any}
+                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
                             metadataPointerExtension={metadataPointerExtension as any}
                         />
                     </Suspense>
@@ -366,7 +368,9 @@ function Token22MintHeader({
     metadataPointerExtension,
 }: {
     address: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     metadataExtension: { extension: 'tokenMetadata'; state?: any };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     metadataPointerExtension: { extension: 'metadataPointer'; state?: any };
 }) {
     const tokenMetadata = create(metadataExtension.state, TokenMetadata);

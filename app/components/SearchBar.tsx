@@ -28,10 +28,12 @@ const hasDomainSyntax = (value: string) => {
 
 export function SearchBar() {
     const [search, setSearch] = React.useState('');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const selectRef = React.useRef<AsyncSelect<any> | null>(null);
     const router = useRouter();
     const { cluster, clusterInfo } = useCluster();
     const searchParams = useSearchParams();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const onChange = ({ pathname }: ValueType<any, false>, meta: ActionMeta<any>) => {
         if (meta.action === 'select-option') {
             const nextQueryString = searchParams?.toString();
@@ -61,6 +63,7 @@ export function SearchBar() {
         return [...localOptions, ...tokenOptionsAppendable, ...domainOptions];
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const resetValue = '' as any;
     return (
         <div className="container my-4">

@@ -347,6 +347,7 @@ async function handleParsedAccountData(
                     ? {
                           active: Number(activation.active),
                           inactive: Number(activation.inactive),
+                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
                           state: activation.status as any,
                       }
                     : undefined,
@@ -435,6 +436,7 @@ const getMetaDataJSON = async (
         const uri = metadata.data.uri;
         if (!uri) return resolve(undefined);
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const processJson = (extended: any) => {
             if (!extended || (!extended.image && extended?.properties?.files?.length === 0)) {
                 return;

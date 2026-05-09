@@ -11,6 +11,7 @@ export namespace NftokenTypes {
         description: string | null;
 
         image: string;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         traits: any;
 
         animation_url: string | null;

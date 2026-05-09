@@ -47,6 +47,7 @@ export function useSquadsMultisig(
                 return null;
             }
             if (version === 'v4') {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 const multisigInfo = await (anchorProgram?.account as unknown as any).multisig.fetch(
                     multisig,
                     'confirmed'
@@ -56,6 +57,7 @@ export function useSquadsMultisig(
                     version,
                 };
             } else if (version === 'v3') {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 const multisigInfo = await (anchorProgram?.account as unknown as any).ms.fetch(multisig, 'confirmed');
                 return {
                     multisig: multisigInfo,

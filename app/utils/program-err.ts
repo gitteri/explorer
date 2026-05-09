@@ -64,6 +64,7 @@ export function getTransactionInstructionError(error?: TransactionError | null):
     }
 
     if (typeof error === 'object' && 'InstructionError' in error) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const innerError = error['InstructionError'] as any;
         const index = innerError[0] as number;
         const instructionError = innerError[1];
@@ -75,6 +76,7 @@ export function getTransactionInstructionError(error?: TransactionError | null):
     }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getInstructionError(error: any): string {
     let out;
     let value;

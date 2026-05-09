@@ -96,6 +96,7 @@ const VideoArtContent = ({
                     {animationURL && <source src={animationURL} type="video/mp4" />}
                     {files
                         ?.filter(f => typeof f !== 'string')
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         .map((f: any, index: number) => (
                             <source key={index} src={f.uri} type={f.type} />
                         ))}
